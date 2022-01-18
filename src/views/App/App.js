@@ -1,14 +1,18 @@
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../../routes';
+import GlobalStyle from '../../styles/globalstyle';
 
 const App = () => {
   return (
-    <Router basename="/">
-      <div className='app'>
-        <Routes />
-      </div>
-    </Router>
+    <>
+      <GlobalStyle />
+      <Router basename="/">
+        <div className='app'>
+          <Routes />
+        </div>
+      </Router>
+    </>
   );
 }
 
