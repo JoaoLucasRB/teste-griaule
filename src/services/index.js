@@ -11,6 +11,14 @@ const list = (offset=0, limit=20) => {
     );
 }
 
+const fetchOne = (name) => {
+  return api
+    .get(
+      `${name}`
+    );
+}
+
 export const service = {
-  list
+  list,
+  fetchOne,
 }
