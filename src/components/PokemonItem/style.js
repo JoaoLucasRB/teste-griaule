@@ -14,14 +14,20 @@ export const Container = styled.div`
 
   & > img {
     margin-bottom: 1rem;
+    width: 100%;
     height: 45%;
   }
 
-  & > p {
-    color: #3238a8;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    font-size: 1.3rem;
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    & > p {
+      color: #3238a8;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
   }
 
   & > span {

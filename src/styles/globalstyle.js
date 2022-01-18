@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   :root {
+    --dark-blue: #3238a8;
+    --darker-blue: #2a2f8c;
   }
 
   * {

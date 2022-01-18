@@ -1,9 +1,11 @@
-.App {
-  text-align: center;
-}
+import styled from "styled-components";
 
-.App-header {
-  /* background-color: #282c34; */
+export const Container = styled.div`
+  text-align: center;
+`
+
+export const Content = styled.header`
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,4 +13,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+`

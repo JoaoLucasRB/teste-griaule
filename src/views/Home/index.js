@@ -1,13 +1,13 @@
 import { PokemonList } from '../../components/PokemonList';
-import './Home.css';
+import { Container, Content } from './style';
 
 const Home = () => {
   return (
-    <div className="Home">
-      <header className="Home-header">
+    <Container>
+      <Content>
         <PokemonList />
-      </header>
-    </div>
+      </Content>
+    </Container>
   );
 }
 

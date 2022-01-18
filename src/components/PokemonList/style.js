@@ -1,38 +1,31 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-background-color: red;
-height: 100%;
-width: 100%;
-display: flex;
-flex-wrap: wrap;
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 `
 
-export const PokemonItem = styled.div`
-  background: white;
-  height: 30rem;
-  width: 25%;
-  padding: 2rem;
-  transition: background 0.3s ease-in-out;
-  color: black;
+export const Navigation = styled.div`
+  background: #eee;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
 
-  &:hover {
-    background: #eee;
-  }
-
-  & > img {
-    margin-bottom: 1rem;
-    height: 45%;
-  }
-
-  & > p {
-    color: #3238a8;
-    margin-bottom: 1rem;
+  & > button{
+    background: var(--dark-blue);
+    color: white;
+    border-style: none;
+    padding: 0.5rem;
+    width: 5rem;
     font-weight: 700;
-    font-size: 1.3rem;
-  }
+    transition: background 0.3s ease-in-out;
 
-  & > span {
-    
+    &:hover {
+      background: var(--darker-blue);
+    }
   }
 `
