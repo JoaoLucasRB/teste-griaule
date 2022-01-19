@@ -10,7 +10,7 @@ export function PokemonList() {
   const [limit, setLimit] = useState(0);
   const [pokemonList, setPokemonList] = useState([]);
 
-  async function loadData() {
+  async function reloadData() {
     const newPokemonList = [];
     const resultList = await service.list((count * 20), 20);
     if (!limit)
@@ -23,13 +23,25 @@ export function PokemonList() {
   }
 
   useEffect(() => {
+    async function loadData() {
+      const newPokemonList = [];
+      const resultList = await service.list((count * 20), 20);
+      if (!limit)
+        setLimit(resultList.data.count);
+      for (let pokemon of resultList.data.results) {
+        const resultPokemon = await service.fetchOne(pokemon.name);
+        newPokemonList.push(resultPokemon.data);
+      }
+      setPokemonList(newPokemonList);
+    }
+
     loadData();
-  }, []);
+  }, [limit]);
 
   async function handleNextPage() {
     count++;
     if ((count * 20) < limit)
-      loadData();
+    reloadData();
     else
       count--;
   }
@@ -37,7 +49,7 @@ export function PokemonList() {
   async function handlePreviousPage() {
     if (count > 0) {
       count--;
-      loadData();
+      reloadData();
     }
   }
 
