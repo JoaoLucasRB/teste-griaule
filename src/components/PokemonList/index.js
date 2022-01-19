@@ -12,12 +12,11 @@ export function PokemonList() {
 
   async function loadData() {
     const newPokemonList = [];
-    const resultList = await service.list(0, 20);
+    const resultList = await service.list((count * 20), 20);
     if (!limit)
       setLimit(resultList.data.count);
     for (let pokemon of resultList.data.results) {
       const resultPokemon = await service.fetchOne(pokemon.name);
-      console.log(resultPokemon.data);
       newPokemonList.push(resultPokemon.data);
     }
     setPokemonList(newPokemonList);
@@ -27,40 +26,19 @@ export function PokemonList() {
     loadData();
   }, []);
 
-  useEffect(() => { }, [pokemonList])
-
-  async function nextPage() {
-    console.log('bf', count);
+  async function handleNextPage() {
     count++;
-    if ((count * 20) < limit) {
-      const newPokemonList = [];
-      const resultList = await service.list((count * 20), 20);
-      for (let pokemon of resultList.data.results) {
-        const resultPokemon = await service.fetchOne(pokemon.name);
-        console.log(resultPokemon.data);
-        newPokemonList.push(resultPokemon.data);
-      }
-      setPokemonList(newPokemonList);
-    } else {
+    if ((count * 20) < limit)
+      loadData();
+    else
       count--;
-    }
-    console.log('af', count);
   }
 
-  async function previousPage() {
-    console.log('bf', count);
+  async function handlePreviousPage() {
     if (count > 0) {
       count--;
-      const newPokemonList = [];
-      const resultList = await service.list((count * 20), 20);
-      for (let pokemon of resultList.data.results) {
-        const resultPokemon = await service.fetchOne(pokemon.name);
-        console.log(resultPokemon.data);
-        newPokemonList.push(resultPokemon.data);
-      }
-      setPokemonList(newPokemonList);
+      loadData();
     }
-    console.log('af', count);
   }
 
 
@@ -70,8 +48,8 @@ export function PokemonList() {
         <PokemonItem pokemon={pokemon} key={`POKEMON_LIST_${pokemon.name.toUpperCase()}`} />
       )}
       <Navigation>
-        <button onClick={() => previousPage()}>Previous</button>
-        <button onClick={() => nextPage()}>Next</button>
+        <button onClick={() => handlePreviousPage()}>Previous</button>
+        <button onClick={() => handleNextPage()}>Next</button>
       </Navigation>
     </Container>
   );
