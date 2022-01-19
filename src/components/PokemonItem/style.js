@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: white;
+  background: var(--white);
   height: 30rem;
   width: 25%;
   padding: 2rem;
   transition: background 0.3s ease-in-out;
-  color: black;
+  color: var(--black);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   &:hover {
-    background: #eee;
+    background: var(--grey);
   }
 
   & > img {
@@ -23,7 +23,7 @@ export const Container = styled.div`
   }
 
   & > p {
-    color: #3238a8;
+    color: var(--dark-blue);
     margin-bottom: 1rem;
     font-weight: 700;
     font-size: 1.3rem;
@@ -36,14 +36,10 @@ export const Container = styled.div`
     width: 100%;
 
     & > p {
-      color: #3238a8;
+      color: var(--dark-blue);
       margin-bottom: 1rem;
       font-weight: 700;
       font-size: 1.3rem;
     }
-  }
-
-  & > span {
-    
   }
 `

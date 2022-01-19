@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <Container>
       <Content>
+        <h2>All Pokemons</h2>
         <PokemonList />
       </Content>
     </Container>
